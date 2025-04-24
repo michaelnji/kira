@@ -23,6 +23,9 @@ A modern Nuxt.js starter template with pre-configured fonts, UnoCSS integration,
 ### Installation
 
 1. Clone this template:
+```bash
+git clone https://github.com/michaelnji/kira.git my-project
+```
 
 
 2. Navigate to the project:

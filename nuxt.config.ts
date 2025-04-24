@@ -1,8 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
+import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
-  devtools: { enabled: true },
-
+  devtools: { enabled: false },
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  css: ["~/assets/css/app.css"],
   modules: [
     '@nuxt/fonts',
     '@nuxt/icon',
@@ -11,8 +16,7 @@ export default defineNuxtConfig({
     '@nuxt/test-utils',
     '@pinia/nuxt',
     '@vueuse/nuxt',
-    '@unocss/nuxt',
-    '@nuxtjs/tailwindcss'
+    // '@unocss/nuxt',
   ],
   icon: {
     customCollections: [
