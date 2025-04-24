@@ -14,6 +14,7 @@
     --font-sans: "Poppins";
 }
 
+/* Replace with your theme generated from https: //daisyui.com/theme-generator/ */
 @plugin "daisyui/theme" {
     name: "kira";
     default: true;

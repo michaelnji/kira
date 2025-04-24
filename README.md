@@ -1,17 +1,24 @@
-# Nuxt Starter Template
+![Kira Template](public/kira.png)
 
-A modern Nuxt.js starter template with pre-configured fonts, UnoCSS integration, and TypeScript support.
+# Kira - The Minimal Nuxt.js Starter Template
+
+A modern Nuxt.js starter template with TailwindCSS, DaisyUI integration, and TypeScript support.
 
 ## Features
 
 - 🚀 [Nuxt.js](https://nuxt.com/) - The Vue.js Framework
-- 💨 [UnoCSS](https://unocss.dev/) - Instant On-demand Atomic CSS Engine
+- 💨 [DaisyUI](https://daisyui.com/) - Component Library for Tailwind CSS
+- 🎨 [TailwindCSS](https://tailwindcss.com/) - Intuitive CSS Framework
+- 🎨 Beautiful Kira Theme (designed with daisyUI)
 - 🔤 Custom Font Configuration
-  - Display: Inter/Lagistha
+  - Display: Lagistha
   - Sans/Body: Poppins
-  - Mono: Roboto/Roboto Mono
+  - Mono: Roboto Mono
 - 📝 TypeScript Support
-- 🎨 Tailwind-compatible CSS Reset
+- ⚡️ Powered by Bun for Fast Development
+- 📦 [Pinia](https://pinia.vuejs.org/) - Intuitive State Management
+- 🛠️ Utility Functions for Common Tasks
+
 
 ## Getting Started
 
@@ -49,15 +56,18 @@ Visit `http://localhost:3000` to see your application.
 
 Key directories and files:
 - `/assets`: Contains your source assets (CSS, icons, images)
+- `/components`: Reusable Vue components
+- `/layouts`: Page layout templates
+- `/pages`: Application routes and views
 - `/public`: Static files served at root path
 - `/public/fonts`: Pre-bundled font families including:
-  - ClashDisplay (Variable + 6 weights)
-  - Poppins (Variable + 9 weights + italics)
-  - Roboto Mono (6 weights + italics)
-  - Additional custom fonts
+  - Lagistha (Display font)
+  - Poppins (Sans/Body font)
+  - Roboto Mono (Monospace font)
+- `/server`: Server-side code and API routes
+- `/lib`: Utility functions and shared code
+- `/types`: TypeScript type definitions
 - Configuration files:
   - `app.config.ts`: Application-specific configuration
   - `nuxt.config.ts`: Nuxt.js configuration
-  - `theme.config.ts`: Theme settings including fonts
-  - `uno.config.ts`: UnoCSS configuration
-  - `biome.json`: Biome toolchain settings
+  - `tsconfig.json`: TypeScript configuration

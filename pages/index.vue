@@ -1,5 +1,5 @@
+<!-- homepage (you can delete this page to start your project) -->
 <script lang="ts" setup>
-// No imports needed as we're using UnoCSS and daisyUI
 </script>
 
 <template>
