@@ -21,8 +21,7 @@
                             <span>Kira</span> <small class="text-base-100">Template</small>
                         </h1>
                     </div>
-                    <p class="md:text-lg text-center text-base-content/80 mt-4">The Minimal Nuxt.js Starter Template
-                    </p>
+
                 </div>
 
                 <!-- Main Content -->
@@ -50,14 +49,14 @@
                         <div class="card bg-base-200">
                             <div class="card-body">
                                 <h3 class="card-title font-medium text-primary">Modern Stack</h3>
-                                <p>Nuxt.js, TypeScript, UnoCSS, and daisyUI - all pre-configured and ready to go.
+                                <p>Nuxt.js, TypeScript, TailwindCSS, and daisyUI - all pre-configured and ready to go.
                                 </p>
                             </div>
                         </div>
                         <div class="card bg-base-200">
                             <div class="card-body">
                                 <h3 class="card-title font-medium text-primary">Beautiful UI</h3>
-                                <p>Pre-built components and a tropical theme that makes your app stand out.</p>
+                                <p>Pre-built components and a custom theme that makes your app stand out.</p>
                             </div>
                         </div>
                         <div class="card bg-base-200">
@@ -80,15 +79,24 @@
                         <div class="badge badge-lg badge-primary font-bold">TypeScript</div>
                         <div class="badge badge-lg badge-primary font-bold">TailwindCSS</div>
                         <div class="badge badge-lg badge-primary font-bold">daisyUI</div>
-                        <div class="badge badge-lg badge-primary font-bold">Bun</div>
+
                     </div>
 
                     <!-- CTA -->
                     <div class="flex gap-4 justify-center">
-                        <NuxtLink target="_blank" to="https://github.com/michaelnji/kira" class="btn btn-outline">
+                        <NuxtLink target="_blank" to="https://github.com/michaelnji/kira"
+                            class="btn btn-lg btn-outline">
                             View on GitHub
                         </NuxtLink>
                     </div>
+
+                    <div
+                        class="text-center bg-secondary text-secondary-content px-5 py-2 text-sm rounded-box w-max mx-auto mt-8 font-medium">
+                        Made with ❤️ by <NuxtLink class="text-primary-content font-bold" target="_blank"
+                            to="https://michaelnji.dev">COD3V1L
+                        </NuxtLink>
+                    </div>
+
                 </div>
             </div>
 
