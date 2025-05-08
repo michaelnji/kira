@@ -10,7 +10,7 @@
             <!-- <div class="absolute -z-0 -inset-1 bg-radial-pattern"></div> -->
 
             <!-- Content -->
-            <div class="container sm:mx-auto  py-6 px-3 md:p8 lg:p-12">
+            <div class="container sm:mx-auto  py-6 px-3 md:p8 ">
 
                 <!-- Logo -->
                 <div class="mb-8 ">
@@ -36,7 +36,7 @@
                     </p>
 
                     <!-- Quick Start -->
-                    <div class="mockup-code bg-neutral text-neutral-content mb-8 text-xs/normal font-mono">
+                    <div class="mockup-code bg-neutral text-neutral-content mb-8 text-sm/normal font-mono">
                         <pre
                             data-prefix="$"><code><span class="text-success">git</span> clone <span class="underline font-bold">https://github.com/michaelnji/kira.git</span> my-project</code></pre>
                         <pre data-prefix="$"><code><span class="text-success">cd</span> my-project</code></pre>
@@ -48,26 +48,34 @@
                     <div class="grid md:grid-cols-2 gap-3 mb-12">
                         <div class="card bg-base-200">
                             <div class="card-body">
-                                <h3 class="card-title font-medium text-primary">Modern Stack</h3>
+                                <h3 class="card-title font-medium text-primary">
+                                    <Icon name="solar:server-minimalistic-bold-duotone" size="30" /> Modern Stack
+                                </h3>
                                 <p>Nuxt.js, TypeScript, TailwindCSS, and daisyUI - all pre-configured and ready to go.
                                 </p>
                             </div>
                         </div>
                         <div class="card bg-base-200">
                             <div class="card-body">
-                                <h3 class="card-title font-medium text-primary">Beautiful UI</h3>
-                                <p>Pre-built components and a custom theme that makes your app stand out.</p>
+                                <h3 class="card-title font-medium text-primary">
+                                    <Icon name="solar:pallete-2-bold-duotone" size="30" /> Beautiful UI
+                                </h3>
+                                <p>Pre-built custom theme that makes your app stand out.</p>
                             </div>
                         </div>
                         <div class="card bg-base-200">
                             <div class="card-body">
-                                <h3 class="card-title font-medium text-primary">Type Safe</h3>
+                                <h3 class="card-title font-medium text-primary">
+                                    <Icon name="solar:shield-minimalistic-bold-duotone" size="30" /> Type Safe
+                                </h3>
                                 <p>Full TypeScript support with strict type checking and auto-completion.</p>
                             </div>
                         </div>
                         <div class="card bg-base-200">
                             <div class="card-body">
-                                <h3 class="card-title font-medium text-primary">Performance</h3>
+                                <h3 class="card-title font-medium text-primary">
+                                    <Icon name="solar:bolt-bold-duotone" size="30" /> Performance
+                                </h3>
                                 <p>Optimized for speed with modern build tools and best practices.</p>
                             </div>
                         </div>

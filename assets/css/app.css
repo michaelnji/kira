@@ -8,8 +8,8 @@
 
 /* Define your branding fonts here*/
 @theme {
-    --font-mono: "Roboto Mono";
-    --font-display: "Lagistha";
+    --font-mono: "Heming Variable";
+        --font-display: "Rota";
     --font-body: "Poppins";
     --font-sans: "Poppins";
 }
@@ -42,7 +42,7 @@
     --color-error-content: oklch(96% 0.015 12.422);
     --radius-selector: 2rem;
     --radius-field: 2rem;
-    --radius-box: 2rem;
+    --radius-box: 1rem;
     --size-selector: 0.3125rem;
     --size-field: 0.25rem;
     --border: 0.5px;
