@@ -1,3 +1,6 @@
+/* Place all of your custom CSS in this file */
+/* This file is processed by PostCSS, so you can use any PostCSS plugins here */
+/* You can also use Tailwind CSS classes in this file */
 [data-theme='dark'] {
     .bg-radial-pattern {
         background: radial-gradient(rgba(255, 255, 210, 0.2) 1px, transparent 1px);

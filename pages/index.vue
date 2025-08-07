@@ -101,7 +101,7 @@
                     <div
                         class="text-center bg-secondary text-secondary-content px-5 py-2 text-sm rounded-box w-max mx-auto mt-8 font-medium">
                         Made with ❤️ by <NuxtLink class="text-primary-content font-bold" target="_blank"
-                            to="https://michaelnji.dev">COD3V1L
+                            to="https://njicodes.vercel.app">COD3V1L
                         </NuxtLink>
                     </div>
 
