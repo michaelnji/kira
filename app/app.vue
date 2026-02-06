@@ -1,41 +1,41 @@
 <script setup lang="ts">
 const features = [
   {
-    title: 'Nuxt 4',
+    title: "Nuxt 4",
     description:
-      'The latest version of the Vue framework, optimized for speed and developer experience.',
-    icon: 'logos:nuxt-icon',
+      "The latest version of the Vue framework, optimized for speed and developer experience.",
+    icon: "logos:nuxt-icon",
   },
   {
-    title: 'Tailwind CSS v4',
+    title: "Tailwind CSS v4",
     description:
-      'Utility-first CSS framework for rapid UI development, now faster than ever.',
-    icon: 'logos:tailwindcss-icon',
+      "Utility-first CSS framework for rapid UI development, now faster than ever.",
+    icon: "logos:tailwindcss-icon",
   },
   {
-    title: 'DaisyUI 5',
+    title: "DaisyUI 5",
     description:
-      'The most popular component library for Tailwind CSS, adding component classes.',
-    icon: 'solar:palette-bold',
+      "The most popular component library for Tailwind CSS, adding component classes.",
+    icon: "solar:palette-bold",
   },
   {
-    title: 'Supabase',
+    title: "Supabase",
     description:
-      'Open source Firebase alternative. Database, Auth, Realtime, Storage, and more.',
-    icon: 'logos:supabase-icon',
+      "Open source Firebase alternative. Database, Auth, Realtime, Storage, and more.",
+    icon: "logos:supabase-icon",
   },
   {
-    title: 'Pinia',
-    description: 'The intuitive, type-safe store for Vue.js state management.',
-    icon: 'logos:pinia',
+    title: "Pinia",
+    description: "The intuitive, type-safe store for Vue.js state management.",
+    icon: "logos:pinia",
   },
   {
-    title: 'Local Fonts',
+    title: "Local Fonts",
     description:
-      'Privacy-friendly local font loading with @nuxt/fonts for optimal performance.',
-    icon: 'solar:text-bold',
+      "Privacy-friendly local font loading with @nuxt/fonts for optimal performance.",
+    icon: "solar:text-bold",
   },
-]
+];
 </script>
 
 <template>
@@ -44,13 +44,15 @@ const features = [
 
     <!-- Navbar -->
     <div class="navbar bg-base-100/80 backdrop-blur-md sticky top-0 z-50 border-b border-base-200">
-      <div class="container mx-auto px-4">
-        <div class="flex-1">
-          <a class="btn btn-ghost text-2xl font-display font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Kira</a>
+      <div class="container mx-auto justify-between flex px-4">
+        <div class="">
+          <a
+            class="btn btn-ghost text-2xl font-display font-bold bg-linear-to-r from-primary to-accent bg-clip-text text-transparent"
+          >Kira</a>
         </div>
-        <div class="flex-none gap-2">
+        <div class="flex items-center gap-2">
           <a href="https://github.com" target="_blank" class="btn btn-ghost btn-circle">
-            <Icon name="solar:github-circle-bold" class="text-2xl" />
+            <Icon name="logos:github-icon" class="text-2xl" />
           </a>
           <button class="btn btn-primary btn-sm rounded-full px-6 font-bold">
             Get Started
@@ -71,17 +73,17 @@ const features = [
             <span class="badge badge-primary badge-xs">New</span>
             <span class="text-xs font-bold tracking-wide">NUXT 4 READY</span>
           </div>
-          <h1 class="text-6xl md:text-8xl font-display font-bold mb-8 leading-tight">
-            The <span class="text-primary italic">Modern</span> Starter <br>
+          <h1 class="md:text-6xl text-4xl  font-bold mb-8 leading-tight">
+            The <span class="text-primary font-display italic">Modern</span> Starter <br>
             For Your Next Idea
           </h1>
-          <p class="py-6 text-xl text-base-content/80 font-serif leading-relaxed max-w-2xl mx-auto">
+          <p class="py-6 md:text-xl text-base-content/80 font-seri leading-relaxed max-w-2xl mx-auto">
             A meticulously crafted production-ready template. Pre-configured with Nuxt 4, TailwindCSS v4, DaisyUI 5, and a beautiful typography system.
           </p>
           <div class="flex flex-col sm:flex-row justify-center gap-4 mt-8">
             <button class="btn btn-primary btn-lg rounded-full px-8 shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all">
               Start Building
-              <Icon name="solar:arrow-right-bold" />
+              <Icon name="solar:arrow-right-linear" />
             </button>
             <button class="btn btn-outline btn-lg rounded-full px-8">
               Documentation
@@ -115,10 +117,10 @@ const features = [
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div v-for="(feature, index) in features" :key="index" class="card bg-base-100 shadow-xl border border-base-200 hover:border-primary/50 transition-colors group">
             <div class="card-body">
-              <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-primary-content transition-colors">
+              <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 transition-colors">
                 <Icon :name="feature.icon" class="text-2xl text-primary group-hover:text-primary-content" />
               </div>
-              <h3 class="card-title font-display">
+              <h3 class="card-title">
                 {{ feature.title }}
               </h3>
               <p class="opacity-70">
@@ -228,7 +230,7 @@ const features = [
                 <input type="radio" class="radio radio-primary" checked>
               </div>
 
-              <div class="alert bg-base-100 shadow-sm border border-base-200">
+              <div class="alert bg-base-100/70 shadow-sm border border-base-200">
                 <Icon name="solar:info-circle-bold" class="text-info" />
                 <span>DaisyUI components are ready to use.</span>
                 <button class="btn btn-sm btn-ghost">
@@ -242,33 +244,10 @@ const features = [
     </section>
 
     <!-- Footer -->
-    <footer class="footer p-10 bg-neutral text-neutral-content mt-auto">
-      <nav>
-        <header class="footer-title">
-          Services
-        </header>
-        <a class="link link-hover">Branding</a>
-        <a class="link link-hover">Design</a>
-        <a class="link link-hover">Marketing</a>
-        <a class="link link-hover">Advertisement</a>
-      </nav>
-      <nav>
-        <header class="footer-title">
-          Company
-        </header>
-        <a class="link link-hover">About us</a>
-        <a class="link link-hover">Contact</a>
-        <a class="link link-hover">Jobs</a>
-        <a class="link link-hover">Press kit</a>
-      </nav>
-      <nav>
-        <header class="footer-title">
-          Legal
-        </header>
-        <a class="link link-hover">Terms of use</a>
-        <a class="link link-hover">Privacy policy</a>
-        <a class="link link-hover">Cookie policy</a>
-      </nav>
+    <footer class="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-4">
+      <aside>
+        <p>Copyright © {{ new Date().getFullYear() }} - All right reserved by Michael Nji</p>
+      </aside>
     </footer>
   </div>
 </template>

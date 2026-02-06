@@ -1,32 +1,32 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @font-face {
-  font-family: 'General Sans';
-  src: url('/fonts/GeneralSans-Regular.woff2') format('woff2');
+  font-family: "General Sans";
+  src: url("/fonts/GeneralSans-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'General Sans';
-  src: url('/fonts/GeneralSans-Bold.woff2') format('woff2');
+  font-family: "General Sans";
+  src: url("/fonts/GeneralSans-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Gambetta';
-  src: url('/fonts/Gambetta-Regular.woff2') format('woff2');
+  font-family: "Gambetta";
+  src: url("/fonts/Gambetta-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Gambetta';
-  src: url('/fonts/Gambetta-Bold.woff2') format('woff2');
+  font-family: "Gambetta";
+  src: url("/fonts/Gambetta-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -38,18 +38,18 @@
 }
 
 @theme {
-  --font-display: 'Gambetta', serif;
-  --font-body: 'General Sans', sans-serif;
-  --font-sans: 'General Sans', sans-serif;
-  --font-serif: 'Gambetta', serif;
+  --font-display: "Gambetta", serif;
+  --font-body: "General Sans", sans-serif;
+  --font-sans: "General Sans", sans-serif;
+  --font-serif: "Gambetta", serif;
 }
 
 /* Kira Theme */
 @plugin "daisyui/theme" {
-  name: 'kira';
+  name: "kira";
   default: true;
   prefersdark: false;
-  color-scheme: 'dark';
+  color-scheme: "dark";
   --color-base-100: oklch(97% 0.014 308.299);
   --color-base-200: oklch(94% 0.033 307.174);
   --color-base-300: oklch(90% 0.063 306.703);
@@ -78,4 +78,7 @@
   --border: 0.5px;
   --depth: 1;
   --noise: 1;
+}
+.btn {
+  @apply font-semibold;
 }
