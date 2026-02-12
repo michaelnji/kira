@@ -12,10 +12,12 @@
     "format": "biome format . --write"
   },
   "dependencies": {
+    "@fontsource/dm-sans": "^5.2.8",
     "@formkit/auto-animate": "^0.9.0",
     "@nuxt/fonts": "^0.13.0",
     "@nuxt/icon": "^2.2.1",
     "@nuxt/image": "^2.0.0",
+    "@primeuix/themes": "^1.2.3",
     "@tailwindcss/vite": "^4.1.18",
     "@vueuse/nuxt": "^14.1.0",
     "nexus-req": "^3.1.7",
