@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "primeicons/primeicons.css";
 
 @font-face {
   font-family: "General Sans";
@@ -32,11 +33,6 @@
   font-display: swap;
 }
 
-@plugin "daisyui" {
-  themes: kira;
-  logs: true;
-}
-
 @theme {
   --font-display: "Gambetta", serif;
   --font-body: "General Sans", sans-serif;
@@ -44,41 +40,96 @@
   --font-serif: "Gambetta", serif;
 }
 
-/* Kira Theme */
-@plugin "daisyui/theme" {
-  name: "kira";
-  default: true;
-  prefersdark: false;
-  color-scheme: "dark";
-  --color-base-100: oklch(97% 0.014 308.299);
-  --color-base-200: oklch(94% 0.033 307.174);
-  --color-base-300: oklch(90% 0.063 306.703);
-  --color-base-content: oklch(29% 0.149 302.717);
-  --color-primary: oklch(62% 0.265 303.9);
-  --color-primary-content: oklch(92% 0.12 95.746);
-  --color-secondary: oklch(12% 0.042 264.695);
-  --color-secondary-content: oklch(98% 0 0);
-  --color-accent: oklch(29% 0.149 302.717);
-  --color-accent-content: oklch(98% 0.022 95.277);
-  --color-neutral: oklch(94% 0.033 307.174);
-  --color-neutral-content: oklch(62% 0.265 303.9);
-  --color-info: oklch(58% 0.158 241.966);
-  --color-info-content: oklch(97% 0.013 236.62);
-  --color-success: oklch(64% 0.2 131.684);
-  --color-success-content: oklch(97% 0.021 166.113);
-  --color-warning: oklch(66% 0.179 58.318);
-  --color-warning-content: oklch(98% 0.022 95.277);
-  --color-error: oklch(57% 0.245 27.325);
-  --color-error-content: oklch(96% 0.015 12.422);
-  --radius-selector: 2rem;
-  --radius-field: 2rem;
-  --radius-box: 1rem;
-  --size-selector: 0.3125rem;
-  --size-field: 0.25rem;
-  --border: 0.5px;
-  --depth: 1;
-  --noise: 1;
+@layer base {
+  :root {
+    --color-primary: #2563eb;
+    --color-secondary: #4b5563;
+    --color-accent: #9333ea;
+    --color-neutral: #6b7280;
+    --color-info: #0ea5e9;
+    --color-success: #22c55e;
+    --color-warning: #f59e0b;
+    --color-error: #ef4444;
+
+    --color-primary-foreground: #ffffff;
+    --color-secondary-foreground: #ffffff;
+    --color-accent-foreground: #ffffff;
+    --color-neutral-foreground: #111827;
+    --color-info-foreground: #0b1220;
+    --color-success-foreground: #052e16;
+    --color-warning-foreground: #111827;
+    --color-error-foreground: #111827;
+
+    --color-bg: #ffffff;
+    --color-surface: #f9fafb;
+    --color-surface-2: #f3f4f6;
+    --color-border: #e5e7eb;
+    --color-text: #0f172a;
+    --color-text-muted: #475569;
+  }
+
+  .dark {
+    --color-primary: #60a5fa;
+    --color-secondary: #d1d5db;
+    --color-accent: #c084fc;
+    --color-neutral: #4b5563;
+    --color-info: #38bdf8;
+    --color-success: #4ade80;
+    --color-warning: #fbbf24;
+    --color-error: #f87171;
+
+    --color-primary-foreground: #0b1220;
+    --color-secondary-foreground: #0b1220;
+    --color-accent-foreground: #0b1220;
+    --color-neutral-foreground: #f8fafc;
+    --color-info-foreground: #0b1220;
+    --color-success-foreground: #052e16;
+    --color-warning-foreground: #111827;
+    --color-error-foreground: #111827;
+
+    --color-bg: #020617;
+    --color-surface: #0b1220;
+    --color-surface-2: #111827;
+    --color-border: #1f2937;
+    --color-text: #f8fafc;
+    --color-text-muted: #cbd5e1;
+  }
+
+  html {
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
 }
-.btn {
-  @apply font-semibold;
+
+@layer components {
+  .k-card {
+    @apply rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] shadow-sm;
+  }
+
+  .k-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)] disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .k-btn-primary {
+    @apply bg-[var(--color-primary)] text-[var(--color-primary-foreground)] hover:opacity-90;
+  }
+
+  .k-btn-secondary {
+    @apply bg-[var(--color-secondary)] text-[var(--color-secondary-foreground)] hover:opacity-90;
+  }
+
+  .k-btn-outline {
+    @apply border border-[var(--color-border)] bg-transparent text-[var(--color-text)] hover:bg-[var(--color-surface-2)];
+  }
+
+  .k-input {
+    @apply w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] px-3 py-2 text-sm text-[var(--color-text)] placeholder:text-[var(--color-text-muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)];
+  }
+
+  .k-badge {
+    @apply inline-flex items-center rounded-full border border-[var(--color-border)] bg-[var(--color-surface-2)] px-2 py-0.5 text-xs font-semibold text-[var(--color-text)];
+  }
 }

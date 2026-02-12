@@ -1,253 +1,507 @@
 <script setup lang="ts">
+import Badge from "primevue/badge";
+import Button from "primevue/button";
+import Card from "primevue/card";
+import Dialog from "primevue/dialog";
+import InputText from "primevue/inputtext";
+import Tab from "primevue/tab";
+import TabList from "primevue/tablist";
+import TabPanel from "primevue/tabpanel";
+import TabPanels from "primevue/tabpanels";
+import Tabs from "primevue/tabs";
+import Toast from "primevue/toast";
+import { useToast } from "primevue/usetoast";
+import { computed, defineAsyncComponent, onMounted, ref, watch } from "vue";
+
+const DataTable = defineAsyncComponent(() => import("primevue/datatable"));
+const Column = defineAsyncComponent(() => import("primevue/column"));
+
+const toast = import.meta.client ? useToast() : null;
+
+const isDark = useState<boolean>("isDark", () => false);
+const themeLabel = computed(() => (isDark.value ? "Dark" : "Light"));
+
+function applyTheme(dark: boolean) {
+  if (!import.meta.client) return;
+
+  document.documentElement.classList.toggle("dark", dark);
+  localStorage.setItem("theme", dark ? "dark" : "light");
+}
+
+watch(isDark, applyTheme, { immediate: true });
+
+onMounted(() => {
+  const stored = localStorage.getItem("theme");
+  if (stored === "dark" || stored === "light") {
+    isDark.value = stored === "dark";
+    return;
+  }
+
+  isDark.value =
+    window.matchMedia?.("(prefers-color-scheme: dark)").matches ?? false;
+});
+
 const features = [
   {
     title: "Nuxt 4",
-    description:
-      "The latest version of the Vue framework, optimized for speed and developer experience.",
+    description: "Vue-powered app architecture with a fast dev/build pipeline.",
     icon: "logos:nuxt-icon",
+  },
+  {
+    title: "PrimeVue",
+    description:
+      "A full UI component suite (unstyled) with Tailwind-driven styling.",
+    icon: "solar:palette-round-bold",
   },
   {
     title: "Tailwind CSS v4",
     description:
-      "Utility-first CSS framework for rapid UI development, now faster than ever.",
+      "Utility-first styling with a semantic token layer via CSS variables.",
     icon: "logos:tailwindcss-icon",
   },
   {
-    title: "DaisyUI 5",
-    description:
-      "The most popular component library for Tailwind CSS, adding component classes.",
-    icon: "solar:palette-bold",
-  },
-  {
     title: "Supabase",
-    description:
-      "Open source Firebase alternative. Database, Auth, Realtime, Storage, and more.",
+    description: "Database, Auth, Realtime, Storage and more when you need it.",
     icon: "logos:supabase-icon",
   },
   {
     title: "Pinia",
-    description: "The intuitive, type-safe store for Vue.js state management.",
+    description:
+      "Type-safe state management when your app grows beyond local state.",
     icon: "logos:pinia",
   },
   {
     title: "Local Fonts",
-    description:
-      "Privacy-friendly local font loading with @nuxt/fonts for optimal performance.",
+    description: "Privacy-friendly local fonts loaded via @nuxt/fonts + CSS.",
     icon: "solar:text-bold",
   },
 ];
+
+const semanticColors = [
+  { name: "primary", label: "Primary" },
+  { name: "secondary", label: "Secondary" },
+  { name: "accent", label: "Accent" },
+  { name: "neutral", label: "Neutral" },
+  { name: "info", label: "Info" },
+  { name: "success", label: "Success" },
+  { name: "warning", label: "Warning" },
+  { name: "error", label: "Error" },
+];
+
+type ToastSeverity = "success" | "info" | "warn" | "error";
+
+function showToast(severity: ToastSeverity) {
+  toast?.add({
+    severity,
+    summary: "PrimeVue Toast",
+    detail: `This is a ${severity} message.`,
+    life: 2500,
+  });
+}
+
+const dialogVisible = ref(false);
+const tabsValue = ref("0");
+
+const fullName = ref("");
+const email = ref("");
+
+const people = ref([
+  { id: 1, name: "Ada Lovelace", role: "Engineer", status: "Active" },
+  { id: 2, name: "Grace Hopper", role: "Architect", status: "Active" },
+  { id: 3, name: "Katherine Johnson", role: "Analyst", status: "On Hold" },
+  { id: 4, name: "Alan Turing", role: "Researcher", status: "Inactive" },
+]);
+
+const baseButtonPt = "k-btn";
+const buttonPtPrimary = { root: { class: `${baseButtonPt} k-btn-primary` } };
+const buttonPtSecondary = {
+  root: { class: `${baseButtonPt} k-btn-secondary` },
+};
+const buttonPtOutline = { root: { class: `${baseButtonPt} k-btn-outline` } };
+
+const cardPt = {
+  root: { class: "k-card" },
+  body: { class: "p-6" },
+  title: { class: "text-lg font-semibold text-[var(--color-text)]" },
+  content: { class: "mt-2 text-sm text-[var(--color-text-muted)]" },
+};
+
+const inputPt = {
+  root: { class: "k-input" },
+};
+
+const badgePt = {
+  root: { class: "k-badge" },
+};
+
+const dialogPt = {
+  mask: { class: "backdrop-blur-sm bg-black/30" },
+  root: {
+    class:
+      "w-[min(92vw,36rem)] rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] shadow-xl",
+  },
+  header: {
+    class:
+      "flex items-center justify-between gap-4 border-b border-[var(--color-border)] px-6 py-4",
+  },
+  title: { class: "text-base font-semibold text-[var(--color-text)]" },
+  content: { class: "px-6 py-5 text-sm text-[var(--color-text)]" },
+  footer: { class: "border-t border-[var(--color-border)] px-6 py-4" },
+};
+
+const dataTablePt = {
+  root: {
+    class:
+      "overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]",
+  },
+  tableContainer: { class: "overflow-auto" },
+  table: {
+    class: "w-full border-collapse text-left text-sm text-[var(--color-text)]",
+  },
+  thead: { class: "bg-[var(--color-surface-2)] text-[var(--color-text)]" },
+  headerRow: { class: "border-b border-[var(--color-border)]" },
+  tbody: { class: "divide-y divide-[var(--color-border)]" },
+  bodyRow: { class: "hover:bg-[var(--color-surface-2)] transition-colors" },
+};
+
+const toastPt = {
+  root: { class: "z-[9999]" },
+  message: {
+    class:
+      "mb-3 overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] shadow-lg",
+  },
+  messageContent: { class: "flex items-start gap-3 p-4" },
+  summary: { class: "text-sm font-semibold text-[var(--color-text)]" },
+  detail: { class: "text-sm text-[var(--color-text-muted)]" },
+  closeButton: {
+    class: "ml-auto rounded-lg p-2 hover:bg-[var(--color-surface-2)]",
+  },
+  closeIcon: { class: "pi pi-times text-sm text-[var(--color-text-muted)]" },
+};
 </script>
 
 <template>
-  <div class="min-h-screen bg-base-100 font-sans text-base-content selection:bg-primary selection:text-primary-content">
+  <div class="min-h-screen bg-[var(--color-bg)] font-sans text-[var(--color-text)] selection:bg-[var(--color-primary)] selection:text-[var(--color-primary-foreground)]">
     <NuxtRouteAnnouncer />
+    <ClientOnly>
+      <Toast :pt="toastPt" />
+    </ClientOnly>
 
-    <!-- Navbar -->
-    <div class="navbar bg-base-100/80 backdrop-blur-md sticky top-0 z-50 border-b border-base-200">
-      <div class="container mx-auto justify-between flex px-4">
-        <div class="">
-          <a
-            class="btn btn-ghost text-2xl font-display font-bold bg-linear-to-r from-primary to-accent bg-clip-text text-transparent"
-          >Kira</a>
+    <header class="sticky top-0 z-40 border-b border-[var(--color-border)] bg-[var(--color-bg)]/80 backdrop-blur">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+        <div class="flex items-center gap-3">
+          <div class="flex h-10 w-10 items-center justify-center rounded-2xl bg-[var(--color-primary)] text-[var(--color-primary-foreground)]">
+            <Icon name="solar:bolt-bold" class="text-lg" />
+          </div>
+          <div class="leading-tight">
+            <div class="font-display text-lg font-bold">
+              Kira
+            </div>
+            <div class="text-xs text-[var(--color-text-muted)]">
+              PrimeVue + Tailwind-only styling
+            </div>
+          </div>
         </div>
+
         <div class="flex items-center gap-2">
-          <a href="https://github.com" target="_blank" class="btn btn-ghost btn-circle">
-            <Icon name="logos:github-icon" class="text-2xl" />
+          <Button
+            :pt="buttonPtOutline"
+            :label="themeLabel"
+            icon="pi pi-moon"
+            icon-pos="left"
+            @click="isDark = !isDark"
+          />
+          <a href="https://github.com" target="_blank" rel="noreferrer" class="k-btn k-btn-outline">
+            <Icon name="logos:github-icon" class="text-lg" />
+            <span class="hidden sm:inline">GitHub</span>
           </a>
-          <button class="btn btn-primary btn-sm rounded-full px-6 font-bold">
-            Get Started
-          </button>
+          <Button :pt="buttonPtPrimary" label="Get Started" icon="pi pi-arrow-right" icon-pos="right" />
         </div>
       </div>
-    </div>
+    </header>
 
-    <!-- Hero Section -->
-    <div class="hero min-h-[80vh] bg-base-100 relative overflow-hidden">
-      <!-- Background Elements -->
-      <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-      <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
-
-      <div class="hero-content text-center relative z-10">
-        <div class="max-w-3xl">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-base-200 mb-8 border border-base-300">
-            <span class="badge badge-primary badge-xs">New</span>
-            <span class="text-xs font-bold tracking-wide">NUXT 4 READY</span>
-          </div>
-          <h1 class="md:text-6xl text-4xl  font-bold mb-8 leading-tight">
-            The <span class="text-primary font-display italic">Modern</span> Starter <br>
-            For Your Next Idea
-          </h1>
-          <p class="py-6 md:text-xl text-base-content/80 font-seri leading-relaxed max-w-2xl mx-auto">
-            A meticulously crafted production-ready template. Pre-configured with Nuxt 4, TailwindCSS v4, DaisyUI 5, and a beautiful typography system.
-          </p>
-          <div class="flex flex-col sm:flex-row justify-center gap-4 mt-8">
-            <button class="btn btn-primary btn-lg rounded-full px-8 shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all">
-              Start Building
-              <Icon name="solar:arrow-right-linear" />
-            </button>
-            <button class="btn btn-outline btn-lg rounded-full px-8">
-              Documentation
-            </button>
-          </div>
-
-          <!-- Tech Stack Icons -->
-          <div class="mt-16 flex justify-center gap-8 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-            <Icon name="logos:nuxt-icon" class="text-3xl" />
-            <Icon name="logos:tailwindcss-icon" class="text-3xl" />
-            <Icon name="logos:typescript-icon" class="text-3xl" />
-            <Icon name="logos:supabase-icon" class="text-3xl" />
-            <Icon name="logos:pinia" class="text-3xl" />
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Features Grid -->
-    <section class="py-24 bg-base-200/50">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl font-display font-bold mb-4">
-            Baked-in Excellence
-          </h2>
-          <p class="text-lg opacity-70">
-            Everything you need to ship faster, configured to perfection.
-          </p>
+    <main>
+      <section class="relative overflow-hidden">
+        <div class="pointer-events-none absolute inset-0">
+          <div class="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-[var(--color-primary)]/15 blur-3xl" />
+          <div class="absolute -bottom-40 -left-40 h-[28rem] w-[28rem] rounded-full bg-[var(--color-accent)]/15 blur-3xl" />
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div v-for="(feature, index) in features" :key="index" class="card bg-base-100 shadow-xl border border-base-200 hover:border-primary/50 transition-colors group">
-            <div class="card-body">
-              <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 transition-colors">
-                <Icon :name="feature.icon" class="text-2xl text-primary group-hover:text-primary-content" />
-              </div>
-              <h3 class="card-title">
-                {{ feature.title }}
-              </h3>
-              <p class="opacity-70">
-                {{ feature.description }}
-              </p>
+        <div class="mx-auto max-w-6xl px-4 py-20 sm:py-24">
+          <div class="mx-auto max-w-3xl text-center">
+            <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-1">
+              <Badge value="New" :pt="badgePt" />
+              <span class="text-xs font-semibold text-[var(--color-text-muted)]">Nuxt 4-ready + PrimeVue (unstyled)</span>
+            </div>
+
+            <h1 class="font-display text-4xl font-bold leading-tight sm:text-6xl">
+              Build faster with
+              <span class="italic text-[var(--color-primary)]">PrimeVue</span>
+              and Tailwind
+            </h1>
+
+            <p class="mt-6 text-base leading-relaxed text-[var(--color-text-muted)] sm:text-lg">
+              The homepage is rebuilt with PrimeVue components and a semantic theme layer powered by Tailwind colors via CSS custom properties.
+            </p>
+
+            <div class="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
+              <Button :pt="buttonPtPrimary" label="Open Dialog" icon="pi pi-window-maximize" @click="dialogVisible = true" />
+              <Button :pt="buttonPtOutline" label="Show Toast" icon="pi pi-bell" @click="showToast('info')" />
+            </div>
+
+            <div class="mt-12 flex flex-wrap justify-center gap-3">
+              <span class="k-badge">Nuxt</span>
+              <span class="k-badge">PrimeVue</span>
+              <span class="k-badge">Tailwind v4</span>
+              <span class="k-badge">Dark mode</span>
+              <span class="k-badge">Unstyled components</span>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Design System Showcase -->
-    <section class="py-24 container mx-auto px-4">
-      <div class="flex flex-col md:flex-row gap-16 items-start">
-        <!-- Typography -->
-        <div class="flex-1 space-y-12">
-          <div>
-            <h3 class="text-2xl font-bold mb-8 flex items-center gap-2">
-              <Icon name="solar:text-bold" class="text-primary" /> Typography
-            </h3>
-            <div class="space-y-8 p-8 bg-base-200/30 rounded-3xl border border-base-200">
-              <div>
-                <p class="text-xs opacity-50 mb-2 font-mono">
-                  Display • Gambetta
-                </p>
-                <h1 class="font-display text-5xl font-bold">
-                  Elegant & Bold
-                </h1>
-                <h2 class="font-display text-4xl italic mt-2 text-primary">
-                  With a touch of style
-                </h2>
+      <section class="mx-auto max-w-6xl px-4 pb-16">
+        <div class="grid gap-6 md:grid-cols-3">
+          <Card
+            v-for="(feature, idx) in features"
+            :key="idx"
+            :pt="{
+              ...cardPt,
+              content: { class: 'mt-3 text-sm text-[var(--color-text-muted)]' },
+            }"
+          >
+            <template #title>
+              <div class="flex items-center gap-3">
+                <div class="flex h-10 w-10 items-center justify-center rounded-2xl bg-[var(--color-surface-2)] text-[var(--color-primary)]">
+                  <Icon :name="feature.icon" class="text-xl" />
+                </div>
+                <span>{{ feature.title }}</span>
               </div>
-              <div>
-                <p class="text-xs opacity-50 mb-2 font-mono">
-                  Body • General Sans
-                </p>
-                <p class="text-lg leading-relaxed">
-                  The quick brown fox jumps over the lazy dog. A clear, modern sans-serif typeface optimized for readability at any size. Perfect for UI and long-form content.
-                </p>
+            </template>
+            <template #content>
+              {{ feature.description }}
+            </template>
+          </Card>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-6xl px-4 pb-20">
+        <div class="grid gap-8 lg:grid-cols-2">
+          <Card :pt="cardPt">
+            <template #title>
+              Theme Tokens
+            </template>
+            <template #content>
+              <div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                <div
+                  v-for="c in semanticColors"
+                  :key="c.name"
+                  class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3"
+                >
+                  <div class="flex items-center justify-between gap-3">
+                    <div class="text-xs font-semibold uppercase tracking-wide text-[var(--color-text-muted)]">
+                      {{ c.label }}
+                    </div>
+                    <div :class="`h-4 w-4 rounded-full bg-[var(--color-${c.name})]`" />
+                  </div>
+                  <div class="mt-2 text-sm font-semibold text-[var(--color-text)]">
+                    --color-{{ c.name }}
+                  </div>
+                </div>
+              </div>
+            </template>
+          </Card>
+
+          <Card :pt="cardPt">
+            <template #title>
+              Form (InputText)
+            </template>
+            <template #content>
+              <div class="grid gap-4">
+                <div>
+                  <label class="mb-2 block text-sm font-semibold text-[var(--color-text)]" for="fullName">Full name</label>
+                  <InputText id="fullName" v-model="fullName" placeholder="Jane Doe" :pt="inputPt" />
+                </div>
+                <div>
+                  <label class="mb-2 block text-sm font-semibold text-[var(--color-text)]" for="email">Email</label>
+                  <InputText id="email" v-model="email" placeholder="jane@example.com" :pt="inputPt" />
+                </div>
+
+                <div class="flex flex-wrap gap-2">
+                  <Button :pt="buttonPtPrimary" label="Toast success" icon="pi pi-check" @click="showToast('success')" />
+                  <Button :pt="buttonPtSecondary" label="Toast warn" icon="pi pi-exclamation-triangle" @click="showToast('warn')" />
+                  <Button :pt="buttonPtOutline" label="Toast error" icon="pi pi-times" @click="showToast('error')" />
+                </div>
+              </div>
+            </template>
+          </Card>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-6xl px-4 pb-20">
+        <div class="grid gap-8 lg:grid-cols-2">
+          <Card :pt="cardPt">
+            <template #title>
+              Tabs (PrimeVue replacement for TabView)
+            </template>
+            <template #content>
+              <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4">
+                <div class="mb-3 flex gap-2">
+                  <Button :pt="buttonPtOutline" label="1" class="!h-9 !w-9 !p-0" :outlined="tabsValue !== '0'" @click="tabsValue = '0'" />
+                  <Button :pt="buttonPtOutline" label="2" class="!h-9 !w-9 !p-0" :outlined="tabsValue !== '1'" @click="tabsValue = '1'" />
+                  <Button :pt="buttonPtOutline" label="3" class="!h-9 !w-9 !p-0" :outlined="tabsValue !== '2'" @click="tabsValue = '2'" />
+                </div>
+
+                <Tabs v-model:value="tabsValue">
+                  <TabList class="flex flex-wrap gap-2">
+                    <Tab value="0" class="k-btn k-btn-outline">
+                      Overview
+                    </Tab>
+                    <Tab value="1" class="k-btn k-btn-outline">
+                      Components
+                    </Tab>
+                    <Tab value="2" class="k-btn k-btn-outline">
+                      Theme
+                    </Tab>
+                  </TabList>
+                  <TabPanels class="mt-4">
+                    <TabPanel value="0" class="text-sm text-[var(--color-text-muted)]">
+                      Responsive layout uses Tailwind utilities; interactive pieces use Vue state.
+                    </TabPanel>
+                    <TabPanel value="1" class="text-sm text-[var(--color-text-muted)]">
+                      This page showcases Button, Card, InputText, DataTable, Dialog, Toast, Tabs, and Badge.
+                    </TabPanel>
+                    <TabPanel value="2" class="text-sm text-[var(--color-text-muted)]">
+                      Semantic colors map to Tailwind palettes via CSS variables and support dark mode.
+                    </TabPanel>
+                  </TabPanels>
+                </Tabs>
+              </div>
+            </template>
+          </Card>
+
+          <Card :pt="cardPt">
+            <template #title>
+              DataTable (lazy-loaded)
+            </template>
+            <template #content>
+              <DataTable :value="people" data-key="id" :pt="dataTablePt" class="w-full">
+                <Column field="name" header="Name" />
+                <Column field="role" header="Role" />
+                <Column field="status" header="Status">
+                  <template #body="{ data }">
+                    <span class="k-badge">
+                      {{ data.status }}
+                    </span>
+                  </template>
+                </Column>
+              </DataTable>
+            </template>
+          </Card>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-6xl px-4 pb-24">
+        <div class="k-card overflow-hidden">
+          <div class="flex flex-col gap-2 border-b border-[var(--color-border)] bg-[var(--color-surface)] px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <div class="text-sm font-semibold text-[var(--color-text)]">
+                PrimeVue Component Demos
+              </div>
+              <div class="text-sm text-[var(--color-text-muted)]">
+                Dialog and toast are interactive and maintain state without reload.
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <Button :pt="buttonPtPrimary" label="Open Dialog" icon="pi pi-window-maximize" @click="dialogVisible = true" />
+              <Button :pt="buttonPtOutline" label="Info Toast" icon="pi pi-info-circle" @click="showToast('info')" />
+              <Button :pt="buttonPtSecondary" label="Success Toast" icon="pi pi-check" @click="showToast('success')" />
+            </div>
+          </div>
+
+          <div class="grid gap-6 bg-[var(--color-bg)] p-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5">
+              <div class="text-xs font-semibold uppercase tracking-wide text-[var(--color-text-muted)]">
+                Badge
+              </div>
+              <div class="mt-3 flex items-center gap-2">
+                <Badge value="v4" :pt="badgePt" />
+                <span class="text-sm text-[var(--color-text-muted)]">PrimeVue</span>
+              </div>
+            </div>
+
+            <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5">
+              <div class="text-xs font-semibold uppercase tracking-wide text-[var(--color-text-muted)]">
+                InputText
+              </div>
+              <div class="mt-3">
+                <InputText v-model="fullName" placeholder="Type something..." :pt="inputPt" />
+              </div>
+            </div>
+
+            <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5">
+              <div class="text-xs font-semibold uppercase tracking-wide text-[var(--color-text-muted)]">
+                Button
+              </div>
+              <div class="mt-3 flex flex-wrap gap-2">
+                <Button :pt="buttonPtPrimary" label="Primary" />
+                <Button :pt="buttonPtSecondary" label="Secondary" />
+                <Button :pt="buttonPtOutline" label="Outline" />
+              </div>
+            </div>
+
+            <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5">
+              <div class="text-xs font-semibold uppercase tracking-wide text-[var(--color-text-muted)]">
+                Toast
+              </div>
+              <div class="mt-3">
+                <Button :pt="buttonPtOutline" label="Trigger toast" icon="pi pi-bell" @click="showToast('info')" />
               </div>
             </div>
           </div>
         </div>
+      </section>
+    </main>
 
-        <!-- Color & Components -->
-        <div class="flex-1 space-y-12">
-          <div>
-            <h3 class="text-2xl font-bold mb-8 flex items-center gap-2">
-              <Icon name="solar:palette-bold" class="text-primary" /> Palette
-            </h3>
-            <div class="grid grid-cols-2 gap-4">
-              <div class="p-6 rounded-2xl bg-primary text-primary-content">
-                <p class="font-bold">
-                  Primary
-                </p>
-                <p class="text-sm opacity-80">
-                  Brand Color
-                </p>
-              </div>
-              <div class="p-6 rounded-2xl bg-secondary text-secondary-content">
-                <p class="font-bold">
-                  Secondary
-                </p>
-                <p class="text-sm opacity-80">
-                  Supporting
-                </p>
-              </div>
-              <div class="p-6 rounded-2xl bg-accent text-accent-content">
-                <p class="font-bold">
-                  Accent
-                </p>
-                <p class="text-sm opacity-80">
-                  Highlights
-                </p>
-              </div>
-              <div class="p-6 rounded-2xl bg-neutral text-neutral-content">
-                <p class="font-bold">
-                  Neutral
-                </p>
-                <p class="text-sm opacity-80">
-                  Structure
-                </p>
-              </div>
-            </div>
+    <ClientOnly>
+      <Dialog v-model:visible="dialogVisible" modal header="PrimeVue Dialog" :pt="dialogPt">
+        <div class="grid gap-4">
+          <div class="text-sm text-[var(--color-text-muted)]">
+            This dialog is unstyled PrimeVue, themed with Tailwind-driven tokens.
           </div>
 
-          <div>
-            <h3 class="text-2xl font-bold mb-8 flex items-center gap-2">
-              <Icon name="solar:widget-bold" class="text-primary" /> Components
-            </h3>
-            <div class="p-8 bg-base-200/30 rounded-3xl border border-base-200 space-y-6">
-              <div class="flex flex-wrap gap-4">
-                <button class="btn btn-primary">
-                  Primary
-                </button>
-                <button class="btn btn-outline">
-                  Outline
-                </button>
-                <button class="btn btn-ghost">
-                  Ghost
-                </button>
-              </div>
-
-              <div class="flex items-center gap-4">
-                <input type="checkbox" class="toggle toggle-primary" checked>
-                <input type="checkbox" class="checkbox checkbox-primary" checked>
-                <input type="radio" class="radio radio-primary" checked>
-              </div>
-
-              <div class="alert bg-base-100/70 shadow-sm border border-base-200">
-                <Icon name="solar:info-circle-bold" class="text-info" />
-                <span>DaisyUI components are ready to use.</span>
-                <button class="btn btn-sm btn-ghost">
-                  View
-                </button>
-              </div>
+          <div class="grid gap-3">
+            <div>
+              <label class="mb-2 block text-sm font-semibold text-[var(--color-text)]" for="dialogName">Full name</label>
+              <InputText id="dialogName" v-model="fullName" :pt="inputPt" />
+            </div>
+            <div>
+              <label class="mb-2 block text-sm font-semibold text-[var(--color-text)]" for="dialogEmail">Email</label>
+              <InputText id="dialogEmail" v-model="email" :pt="inputPt" />
             </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-4">
-      <aside>
-        <p>Copyright © {{ new Date().getFullYear() }} - All right reserved by Michael Nji</p>
-      </aside>
+        <template #footer>
+          <div class="flex justify-end gap-2">
+            <Button :pt="buttonPtOutline" label="Close" icon="pi pi-times" @click="dialogVisible = false" />
+            <Button :pt="buttonPtPrimary" label="Save" icon="pi pi-check" @click="showToast('success')" />
+          </div>
+        </template>
+      </Dialog>
+    </ClientOnly>
+
+    <footer class="border-t border-[var(--color-border)] bg-[var(--color-bg)]">
+      <div class="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-8 sm:flex-row sm:items-center sm:justify-between">
+        <div class="text-sm text-[var(--color-text-muted)]">
+          © {{ new Date().getFullYear() }} Michael Nji
+        </div>
+        <div class="flex items-center gap-2 text-sm text-[var(--color-text-muted)]">
+          <span class="k-badge">PrimeVue</span>
+          <span class="k-badge">Tailwind</span>
+          <span class="k-badge">Nuxt</span>
+        </div>
+      </div>
     </footer>
   </div>
 </template>

@@ -1,6 +1,7 @@
 # Module: App Shell
 
 ## Table of Contents
+
 - [Purpose](#purpose)
 - [Responsibilities](#responsibilities)
 - [Key Files](#key-files)
@@ -13,50 +14,59 @@
 - [Diagram](#diagram)
 
 ## Purpose
+
 Render the primary UI for the application using Vue 3 within Nuxt 4.
 
 ## Responsibilities
-- Display navbar, hero, features, design system showcase, and footer.
-- Use Tailwind/DaisyUI classes for layout and components.
+
+- Display header, hero, feature cards, theme tokens, component showcase, and footer.
+- Use PrimeVue (unstyled) components and Tailwind utilities for layout.
+- Provide interactive demos (toast, dialog, tabs) with Vue state.
 - Use Nuxt Icon for vector icons.
 
 ## Key Files
-- [app.vue](file:///Users/michaelnji/Projects/kira/app/app.vue#L41-L253)
+
+- [app.vue](file:///Users/michaelnji/Projects/kira/app/app.vue)
 
 ## Public Interfaces
+
 - UI rendered at the root route; no exported API beyond the Vue template.
 
 ## Important Sections
-- Navbar and actions ([app.vue](file:///Users/michaelnji/Projects/kira/app/app.vue#L45-L60))
-- Hero headline and CTA ([app.vue](file:///Users/michaelnji/Projects/kira/app/app.vue#L64-L92))
-- Tech icon strip ([app.vue](file:///Users/michaelnji/Projects/kira/app/app.vue#L93-L100))
-- Features grid ([app.vue](file:///Users/michaelnji/Projects/kira/app/app.vue#L117-L133))
-- Design system: Typography & palette ([app.vue](file:///Users/michaelnji/Projects/kira/app/app.vue#L136-L207))
-- Components preview ([app.vue](file:///Users/michaelnji/Projects/kira/app/app.vue#L210-L241))
-- Footer ([app.vue](file:///Users/michaelnji/Projects/kira/app/app.vue#L246-L251))
+
+- Header and theme toggle ([app.vue](file:///Users/michaelnji/Projects/kira/app/app.vue))
+- PrimeVue showcase sections (cards, tokens, form, tabs, datatable) ([app.vue](file:///Users/michaelnji/Projects/kira/app/app.vue))
+- Dialog + Toast interactions ([app.vue](file:///Users/michaelnji/Projects/kira/app/app.vue))
+- Footer ([app.vue](file:///Users/michaelnji/Projects/kira/app/app.vue))
 
 ## Internal Structure
-- Composition API `script setup` with static `features` list ([app.vue](file:///Users/michaelnji/Projects/kira/app/app.vue#L1-L38)).
-- Tailwind/DaisyUI classes drive responsive layout and UI components.
+
+- Composition API `script setup` with local state for theme, form inputs, dialog and toast.
+- PrimeVue components are imported directly for tree-shaking; heavier ones are lazy-loaded.
+- Tailwind utilities drive responsive layout and spacing; semantic theme tokens come from CSS variables.
 
 ## Dependencies
+
 - @nuxt/icon for Icon components.
-- Tailwind v4 and DaisyUI for styling.
+- Tailwind v4 for styling.
+- PrimeVue (unstyled) for UI components.
 
 ## Data Usage
+
 - Static feature definitions for display only; no external data or state.
 
 ## Code Examples
+
 ```vue
 <!-- Icon usage within the app shell -->
 <Icon name="logos:nuxt-icon" class="text-3xl" />
 ```
 
 ## Diagram
+
 ```mermaid
 flowchart LR
   Features --> AppShell
   Icons --> AppShell
   Styles --> AppShell
 ```
-

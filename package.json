@@ -18,9 +18,10 @@
     "@nuxt/image": "^2.0.0",
     "@tailwindcss/vite": "^4.1.18",
     "@vueuse/nuxt": "^14.1.0",
-    "daisyui": "^5.5.14",
     "nexus-req": "^3.1.7",
     "nuxt": "^4.3.0",
+    "primeicons": "^7.0.0",
+    "primevue": "^4.3.9",
     "tailwindcss": "^4.1.18",
     "vue": "^3.5.27",
     "vue-router": "^4.6.4"

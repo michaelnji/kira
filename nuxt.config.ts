@@ -6,6 +6,7 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  plugins: ["~/plugins/primevue"],
   css: ["~/assets/css/app.css"],
   modules: [
     "@nuxt/fonts",
