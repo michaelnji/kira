@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { animate } from "animejs";
 import { computed, onMounted, watch } from "vue";
 
 const isDark = useState<boolean>("isDark", () => false);
@@ -22,6 +23,86 @@ onMounted(() => {
 
   isDark.value =
     window.matchMedia?.("(prefers-color-scheme: dark)").matches ?? false;
+});
+
+onMounted(() => {
+  if (!import.meta.client) return;
+
+  if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+
+  const heroTargets = Array.from(
+    document.querySelectorAll<HTMLElement>("[data-hero-item]"),
+  );
+  heroTargets.forEach((el, index) => {
+    animate(el, {
+      opacity: [0, 1],
+      translateY: [12, 0],
+      duration: 450,
+      delay: 120 + index * 80,
+      easing: "easeOutQuad",
+    });
+  });
+
+  const revealTargets = Array.from(
+    document.querySelectorAll<HTMLElement>("[data-reveal]"),
+  );
+  revealTargets.forEach((el) => {
+    el.style.opacity = "0";
+    el.style.transform = "translateY(14px)";
+  });
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        const el = entry.target as HTMLElement;
+        obs.unobserve(el);
+
+        animate(el, {
+          opacity: [0, 1],
+          translateY: [14, 0],
+          duration: 420,
+          easing: "easeOutQuad",
+        });
+      });
+    },
+    { threshold: 0.15 },
+  );
+
+  revealTargets.forEach((el) => observer.observe(el));
+
+  const cards = Array.from(document.querySelectorAll<HTMLElement>(".k-card"));
+  cards.forEach((card) => {
+    card.addEventListener("pointerenter", () => {
+      animate(card, { translateY: -3, duration: 180, easing: "easeOutQuad" });
+    });
+    card.addEventListener("pointerleave", () => {
+      animate(card, { translateY: 0, duration: 220, easing: "easeOutQuad" });
+    });
+  });
+
+  const links = Array.from(
+    document.querySelectorAll<HTMLElement>(
+      "nav a.k-btn, a.k-btn, button.k-btn",
+    ),
+  );
+  links.forEach((el) => {
+    el.addEventListener("pointerenter", () => {
+      animate(el, {
+        letterSpacing: "0.02em",
+        duration: 180,
+        easing: "easeOutQuad",
+      });
+    });
+    el.addEventListener("pointerleave", () => {
+      animate(el, {
+        letterSpacing: "0em",
+        duration: 220,
+        easing: "easeOutQuad",
+      });
+    });
+  });
 });
 
 const stack = [
@@ -70,7 +151,7 @@ const stack = [
   <div class="min-h-screen bg-(--color-bg) font-sans text-(--color-text) selection:bg-(--color-primary) selection:text-(--color-primary-foreground)">
     <NuxtRouteAnnouncer />
 
-    <header class="sticky top-0 z-40 border-b-2 border-(--color-text) bg-(--color-bg)">
+    <header class="sticky top-0 z-40 border-b-2 border-(--color-text) bg-transparent! backdrop-blur-sm">
       <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
         <div class="flex items-center gap-3">
           <div class="flex h-10 w-10 items-center justify-center rounded-2xl border-2 border-(--color-text) bg-(--color-primary) text-(--color-primary-foreground) shadow-[4px_4px_0_0_var(--color-text)]">
@@ -114,22 +195,25 @@ const stack = [
       <section class="mx-auto max-w-6xl px-4 py-14 sm:py-20">
         <div class="grid gap-8 lg:grid-cols-12">
           <div class="lg:col-span-7">
-            <div class="inline-flex items-center gap-2 rounded-full border-2 border-(--color-text) bg-(--color-bg) px-3 py-1 shadow-[4px_4px_0_0_var(--color-accent)]">
+            <div
+              class="inline-flex items-center gap-2 rounded-full border-2 border-(--color-text) bg-(--color-bg) px-3 py-1 shadow-[4px_4px_0_0_var(--color-accent)]"
+              data-hero-item
+            >
               <span class="k-badge">Nuxt 4</span>
               <span class="text-xs font-semibold text-(--color-text-muted)">Bun-first, neo-brutalist defaults</span>
             </div>
 
-            <h1 class="mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl">
+            <h1 class="mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl" data-hero-item>
               Ship a Nuxt v4 project with
               <span class="underline decoration-(--color-primary) decoration-[6px] underline-offset-8">good defaults</span>
               on day one.
             </h1>
 
-            <p class="mt-5 max-w-xl text-base leading-relaxed text-(--color-text-muted) sm:text-lg">
+            <p class="mt-5 max-w-xl text-base leading-relaxed text-(--color-text-muted) sm:text-lg" data-hero-item>
               Kira is a Nuxt v4 starter template that comes pre-wired with Tailwind v4 semantic tokens, PrimeVue styled mode, icons, images, and a clean dev setup.
             </p>
 
-            <div class="mt-8 flex flex-wrap gap-3">
+            <div class="mt-8 flex flex-wrap gap-3" data-hero-item>
               <a class="k-btn k-btn-primary" href="#get-started">
                 Get started
                 <Icon name="solar:arrow-right-bold" class="text-base" />
@@ -145,7 +229,7 @@ const stack = [
           </div>
 
           <div class="lg:col-span-5">
-            <div class="k-card p-6">
+            <div class="k-card p-6" data-hero-item>
               <div class="text-sm font-bold">
                 Brutal, but usable
               </div>
@@ -163,7 +247,7 @@ const stack = [
         </div>
       </section>
 
-      <section id="features" class="mx-auto max-w-6xl px-4 pb-16">
+      <section id="features" class="mx-auto max-w-6xl px-4 pb-16" data-reveal>
         <div class="flex items-end justify-between gap-6">
           <div>
             <div class="text-xs font-bold uppercase tracking-wider text-(--color-text-muted)">
@@ -242,7 +326,7 @@ const stack = [
         </div>
       </section>
 
-      <section id="stack" class="mx-auto max-w-6xl px-4 pb-16">
+      <section id="stack" class="mx-auto max-w-6xl px-4 pb-16" data-reveal>
         <div class="flex items-end justify-between gap-6">
           <div>
             <div class="text-xs font-bold uppercase tracking-wider text-(--color-text-muted)">
@@ -271,7 +355,7 @@ const stack = [
         </div>
       </section>
 
-      <section id="creator" class="mx-auto max-w-6xl px-4 pb-16">
+      <section id="creator" class="mx-auto max-w-6xl px-4 pb-16" data-reveal>
         <div class="k-card p-6 sm:p-8">
           <div class="grid gap-8 lg:grid-cols-12">
             <div class="lg:col-span-7">
@@ -315,7 +399,7 @@ const stack = [
         </div>
       </section>
 
-      <section id="get-started" class="mx-auto max-w-6xl px-4 pb-24">
+      <section id="get-started" class="mx-auto max-w-6xl px-4 pb-24" data-reveal>
         <div class="k-card p-6 sm:p-8">
           <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
