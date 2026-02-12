@@ -19,9 +19,9 @@ Provide global styling, fonts, and a coherent theme using Tailwind CSS v4 and CS
 ## Responsibilities
 
 - Import Tailwind v4 globally.
-- Register local fonts via `@font-face`.
+- Register DM Sans via `@fontsource` imports.
 - Define semantic theme tokens using CSS custom properties with light/dark variants.
-- Provide utility classes for common UI patterns used with PrimeVue unstyled components.
+- Provide utility classes for common UI patterns used across the app shell and PrimeVue styled layouts.
 
 ## Key Files
 
@@ -33,10 +33,10 @@ Provide global styling, fonts, and a coherent theme using Tailwind CSS v4 and CS
 
 ## Important Rules
 
-- Font-face for General Sans and Gambetta ([app.css](file:///Users/michaelnji/Projects/kira/app/assets/css/app.css#L3-L33)).
+- DM Sans imports ([app.css](file:///Users/michaelnji/Projects/kira/app/assets/css/app.css#L1-L6)).
 - PrimeIcons CSS import for PrimeVue icons ([app.css](file:///Users/michaelnji/Projects/kira/app/assets/css/app.css#L1-L2)).
-- Semantic tokens and dark mode variants ([app.css](file:///Users/michaelnji/Projects/kira/app/assets/css/app.css#L43-L105)).
-- Common utility classes (`.k-btn`, `.k-card`, `.k-input`, `.k-badge`) ([app.css](file:///Users/michaelnji/Projects/kira/app/assets/css/app.css#L107-L135)).
+- Tailwind v4 `@theme` tokens, semantic color scales (100–950), and dark mode variants ([app.css](file:///Users/michaelnji/Projects/kira/app/assets/css/app.css)).
+- Common utility classes (`.k-btn`, `.k-card`, `.k-input`, `.k-badge`) ([app.css](file:///Users/michaelnji/Projects/kira/app/assets/css/app.css)).
 
 ## Internal Structure
 
@@ -74,5 +74,5 @@ Provide global styling, fonts, and a coherent theme using Tailwind CSS v4 and CS
 flowchart TD
   TailwindImport --> ThemeTokens
   ThemeTokens --> Utilities
-  Utilities --> PrimeVueUnstyled
+  Utilities --> PrimeVueStyled
 ```

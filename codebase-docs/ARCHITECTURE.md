@@ -13,13 +13,13 @@
 
 ## Overview
 
-The repository implements a client-side Nuxt 4 application. Styling and theming are centralized in global CSS using Tailwind v4 and CSS custom properties, while PrimeVue provides UI components in unstyled mode. Nuxt modules provide fonts, icons, and image capabilities. There is currently no backend or persistence layer.
+The repository implements a client-side Nuxt 4 application. Styling and theming are centralized in global CSS using Tailwind v4 and CSS custom properties, PrimeVue provides UI components in styled mode, and anime.js adds subtle micro-interactions in the app shell. Nuxt modules provide icons and image capabilities. There is currently no backend or persistence layer.
 
 ## Layers & Responsibilities
 
-- UI Components: PrimeVue (unstyled) configured via [primevue.ts](file:///Users/michaelnji/Projects/kira/app/plugins/primevue.ts).
-- UI Components: PrimeVue (unstyled) configured via [primevue.ts](file:///Users/michaelnji/Projects/kira/plugins/primevue.ts).
-- Styling/Theming: [app.css](file:///Users/michaelnji/Projects/kira/app/assets/css/app.css) defines global styles, font-face rules, semantic tokens, and utility classes.
+- UI Components: PrimeVue (styled) configured via [primevue.ts](file:///Users/michaelnji/Projects/kira/app/plugins/primevue.ts).
+- Styling/Theming: [app.css](file:///Users/michaelnji/Projects/kira/app/assets/css/app.css) defines global styles, theme tokens, and utility classes.
+- Micro-interactions: anime.js animations are orchestrated in the app shell ([app.vue](file:///Users/michaelnji/Projects/kira/app/app.vue#L1-L120)).
 - Configuration: [nuxt.config.ts](file:///Users/michaelnji/Projects/kira/nuxt.config.ts#L3-L25) enables devtools, Tailwind v4 via Vite, and Nuxt modules.
 
 ## Component Interactions
@@ -28,13 +28,14 @@ The repository implements a client-side Nuxt 4 application. Styling and theming 
 - PrimeVue components are imported directly in the app shell; heavier components are lazy-loaded.
 - Styles are applied through Tailwind utility classes and semantic CSS variables ([app.vue](file:///Users/michaelnji/Projects/kira/app/app.vue), [app.css](file:///Users/michaelnji/Projects/kira/app/assets/css/app.css)).
 - Icon module provides server-side bundled collections (Solar) configured in Nuxt ([nuxt.config.ts](file:///Users/michaelnji/Projects/kira/nuxt.config.ts#L17-L21)).
+- Micro-interactions are applied to hero elements, section reveals, and hover states via anime.js ([app.vue](file:///Users/michaelnji/Projects/kira/app/app.vue#L29-L94)).
 
 ## Dependencies
 
-- PrimeVue: configured in unstyled mode ([primevue.ts](file:///Users/michaelnji/Projects/kira/app/plugins/primevue.ts)).
-- PrimeVue: configured in unstyled mode ([primevue.ts](file:///Users/michaelnji/Projects/kira/plugins/primevue.ts)).
+- PrimeVue: configured in styled mode ([primevue.ts](file:///Users/michaelnji/Projects/kira/app/plugins/primevue.ts)).
 - PrimeIcons: imported globally for component icons ([app.css](file:///Users/michaelnji/Projects/kira/app/assets/css/app.css#L1-L2)).
-- Fonts: Local loading via font-face; assets under `public/fonts` referenced from CSS ([app.css](file:///Users/michaelnji/Projects/kira/app/assets/css/app.css#L3-L33)).
+- Fonts: DM Sans via Fontsource imports ([app.css](file:///Users/michaelnji/Projects/kira/app/assets/css/app.css#L1-L6)).
+- Animations: anime.js ([package.json](file:///Users/michaelnji/Projects/kira/package.json#L14-L31)).
 
 ## Identified Patterns
 

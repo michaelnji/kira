@@ -8,8 +8,8 @@
 - [PrimeVue](#primevue)
 - [Fonts](#fonts)
 - [Icons](#icons)
+- [Animations](#animations)
 - [ESLint](#eslint)
-- [Biome](#biome)
 - [TypeScript](#typescript)
 - [Feature Flags & Integrations](#feature-flags--integrations)
 
@@ -41,15 +41,14 @@ File: [app.css](file:///Users/michaelnji/Projects/kira/app/assets/css/app.css#L4
 ## PrimeVue
 
 - Plugin: [primevue.ts](file:///Users/michaelnji/Projects/kira/app/plugins/primevue.ts)
-
-- Plugin: [primevue.ts](file:///Users/michaelnji/Projects/kira/plugins/primevue.ts)
+- Configured in styled mode via `@primeuix/themes` preset + semantic tokens.
 
 ## Fonts
 
-File: [app.css](file:///Users/michaelnji/Projects/kira/app/assets/css/app.css#L3-L33)
+File: [app.css](file:///Users/michaelnji/Projects/kira/app/assets/css/app.css#L1-L6)
 
-- Local font-face declarations for "General Sans" and "Gambetta"
-- WOFF2 assets under `public/fonts`
+- DM Sans is loaded via `@fontsource/dm-sans/*` imports.
+- Nuxt Fonts module is configured, but the app shell uses Fontsource imports by default.
 
 ## Icons
 
@@ -58,22 +57,16 @@ Files:
 - Config: [nuxt.config.ts](file:///Users/michaelnji/Projects/kira/nuxt.config.ts#L17-L21)
 - Usage: Icon components within [app.vue](file:///Users/michaelnji/Projects/kira/app/app.vue)
 
+## Animations
+
+- Micro-interactions and subtle entrance reveals are implemented with anime.js in the app shell ([app.vue](file:///Users/michaelnji/Projects/kira/app/app.vue#L1-L120)).
+
 ## ESLint
 
 File: [eslint.config.mjs](file:///Users/michaelnji/Projects/kira/eslint.config.mjs#L1-L5)
 
 - Uses `@antfu/eslint-config`
 - Enables formatters
-
-## Biome
-
-File: [biome.json](file:///Users/michaelnji/Projects/kira/biome.json#L1-L28)
-
-- Formatter enabled
-- Indent style/width configured
-- Import organizer enabled
-- Linter disabled
-- VCS integration respects `.gitignore`
 
 ## TypeScript
 

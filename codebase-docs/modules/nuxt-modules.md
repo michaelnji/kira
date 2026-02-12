@@ -16,7 +16,7 @@ Extend Nuxt functionality for fonts, icons, images, utilities, and animations.
 
 ## Installed Modules
 
-- `@nuxt/fonts` — Local font loading ([nuxt.config.ts](file:///Users/michaelnji/Projects/kira/nuxt.config.ts#L10-L16))
+- `@nuxt/fonts` — Font module (configured, not required for default fonts) ([nuxt.config.ts](file:///Users/michaelnji/Projects/kira/nuxt.config.ts#L10-L16))
 - `@nuxt/icon` — Icon component with bundled collections ([nuxt.config.ts](file:///Users/michaelnji/Projects/kira/nuxt.config.ts#L17-L21))
 - `@nuxt/image` — Optimized image handling ([nuxt.config.ts](file:///Users/michaelnji/Projects/kira/nuxt.config.ts#L10-L16))
 - `@vueuse/nuxt` — VueUse composables integration ([nuxt.config.ts](file:///Users/michaelnji/Projects/kira/nuxt.config.ts#L10-L16))
@@ -39,6 +39,7 @@ Extend Nuxt functionality for fonts, icons, images, utilities, and animations.
 
 ## Usage Notes
 
+- The app shell uses anime.js directly for micro-interactions (not a Nuxt module) ([app.vue](file:///Users/michaelnji/Projects/kira/app/app.vue#L1-L120)).
 - Modules are configured but some (image, vueuse, auto-animate) are not explicitly used in the app shell yet.
 
 ## Diagram

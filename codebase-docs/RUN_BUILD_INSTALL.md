@@ -47,12 +47,12 @@ Use any package manager (as per README):
 ## Lint & Format
 
 - Lint: `npm run lint` → `eslint .` ([package.json](file:///Users/michaelnji/Projects/kira/package.json#L11-L11))
-- Format: `npm run format` → `biome format . --write` ([package.json](file:///Users/michaelnji/Projects/kira/package.json#L12-L12))
+- Format: `npm run format` → `eslint . --fix` ([package.json](file:///Users/michaelnji/Projects/kira/package.json#L12-L12))
 
 ## Git Hooks
 
 - On `postinstall`: `nuxt prepare && simple-git-hooks`
-- `pre-commit`: `lint-staged` ([package.json](file:///Users/michaelnji/Projects/kira/package.json#L10-L47))
+- `pre-commit`: `lint-staged` ([package.json](file:///Users/michaelnji/Projects/kira/package.json#L10-L52))
 
 ## Tests
 
