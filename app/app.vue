@@ -67,20 +67,20 @@ const stack = [
 </script>
 
 <template>
-  <div class="min-h-screen bg-[var(--color-bg)] font-sans text-[var(--color-text)] selection:bg-[var(--color-primary)] selection:text-[var(--color-primary-foreground)]">
+  <div class="min-h-screen bg-(--color-bg) font-sans text-(--color-text) selection:bg-(--color-primary) selection:text-(--color-primary-foreground)">
     <NuxtRouteAnnouncer />
 
-    <header class="sticky top-0 z-40 border-b-2 border-[var(--color-text)] bg-[var(--color-bg)]">
+    <header class="sticky top-0 z-40 border-b-2 border-(--color-text) bg-(--color-bg)">
       <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
         <div class="flex items-center gap-3">
-          <div class="flex h-10 w-10 items-center justify-center rounded-2xl border-2 border-[var(--color-text)] bg-[var(--color-primary)] text-[var(--color-primary-foreground)] shadow-[4px_4px_0_0_var(--color-text)]">
+          <div class="flex h-10 w-10 items-center justify-center rounded-2xl border-2 border-(--color-text) bg-(--color-primary) text-(--color-primary-foreground) shadow-[4px_4px_0_0_var(--color-text)]">
             <Icon name="solar:bolt-bold" class="text-lg" />
           </div>
           <div class="leading-tight">
             <div class="text-lg font-bold tracking-tight">
               Kira
             </div>
-            <div class="text-xs text-[var(--color-text-muted)]">
+            <div class="text-xs text-(--color-text-muted)">
               Nuxt v4 starter template
             </div>
           </div>
@@ -114,18 +114,18 @@ const stack = [
       <section class="mx-auto max-w-6xl px-4 py-14 sm:py-20">
         <div class="grid gap-8 lg:grid-cols-12">
           <div class="lg:col-span-7">
-            <div class="inline-flex items-center gap-2 rounded-full border-2 border-[var(--color-text)] bg-[var(--color-bg)] px-3 py-1 shadow-[4px_4px_0_0_var(--color-accent)]">
+            <div class="inline-flex items-center gap-2 rounded-full border-2 border-(--color-text) bg-(--color-bg) px-3 py-1 shadow-[4px_4px_0_0_var(--color-accent)]">
               <span class="k-badge">Nuxt 4</span>
-              <span class="text-xs font-semibold text-[var(--color-text-muted)]">Bun-first, neo-brutalist defaults</span>
+              <span class="text-xs font-semibold text-(--color-text-muted)">Bun-first, neo-brutalist defaults</span>
             </div>
 
             <h1 class="mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl">
               Ship a Nuxt v4 project with
-              <span class="underline decoration-[var(--color-primary)] decoration-[6px] underline-offset-[8px]">good defaults</span>
+              <span class="underline decoration-(--color-primary) decoration-[6px] underline-offset-8">good defaults</span>
               on day one.
             </h1>
 
-            <p class="mt-5 max-w-xl text-base leading-relaxed text-[var(--color-text-muted)] sm:text-lg">
+            <p class="mt-5 max-w-xl text-base leading-relaxed text-(--color-text-muted) sm:text-lg">
               Kira is a Nuxt v4 starter template that comes pre-wired with Tailwind v4 semantic tokens, PrimeVue styled mode, icons, images, and a clean dev setup.
             </p>
 
@@ -149,7 +149,7 @@ const stack = [
               <div class="text-sm font-bold">
                 Brutal, but usable
               </div>
-              <div class="mt-2 text-sm leading-relaxed text-[var(--color-text-muted)]">
+              <div class="mt-2 text-sm leading-relaxed text-(--color-text-muted)">
                 Thick outlines, hard shadows, semantic tokens, and dark mode by default. Designed to stay simple when you scale into real pages and components.
               </div>
               <div class="mt-5 flex flex-wrap gap-2">
@@ -166,7 +166,7 @@ const stack = [
       <section id="features" class="mx-auto max-w-6xl px-4 pb-16">
         <div class="flex items-end justify-between gap-6">
           <div>
-            <div class="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)]">
+            <div class="text-xs font-bold uppercase tracking-wider text-(--color-text-muted)">
               Features
             </div>
             <h2 class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">
@@ -178,14 +178,14 @@ const stack = [
         <div class="mt-6 grid gap-6 md:grid-cols-2">
           <div class="k-card p-6">
             <div class="flex items-center gap-3">
-              <div class="flex h-11 w-11 items-center justify-center rounded-2xl border-2 border-[var(--color-text)] bg-[var(--color-bg)] shadow-[4px_4px_0_0_var(--color-primary)]">
+              <div class="flex h-11 w-11 items-center justify-center rounded-2xl border-2 border-(--color-text) bg-(--color-bg) shadow-[4px_4px_0_0_var(--color-primary)]">
                 <Icon name="solar:palette-round-bold" class="text-xl" />
               </div>
               <div class="text-lg font-bold">
                 Semantic theme system
               </div>
             </div>
-            <ul class="mt-4 grid gap-2 text-sm text-[var(--color-text-muted)]">
+            <ul class="mt-4 grid gap-2 text-sm text-(--color-text-muted)">
               <li>Primary/secondary/accent + status colors with 100–950 scales</li>
               <li>Light/dark mode via `.dark` on `html`</li>
               <li>Use utilities like `bg-primary-600`, `text-secondary-300`</li>
@@ -194,14 +194,14 @@ const stack = [
 
           <div class="k-card p-6">
             <div class="flex items-center gap-3">
-              <div class="flex h-11 w-11 items-center justify-center rounded-2xl border-2 border-[var(--color-text)] bg-[var(--color-bg)] shadow-[4px_4px_0_0_var(--color-accent)]">
+              <div class="flex h-11 w-11 items-center justify-center rounded-2xl border-2 border-(--color-text) bg-(--color-bg) shadow-[4px_4px_0_0_var(--color-accent)]">
                 <Icon name="solar:widget-2-bold" class="text-xl" />
               </div>
               <div class="text-lg font-bold">
                 UI ready (without the noise)
               </div>
             </div>
-            <ul class="mt-4 grid gap-2 text-sm text-[var(--color-text-muted)]">
+            <ul class="mt-4 grid gap-2 text-sm text-(--color-text-muted)">
               <li>PrimeVue styled mode configured to follow your tokens</li>
               <li>PrimeIcons included globally</li>
               <li>Neo-brutalist utility classes for fast layout</li>
@@ -210,14 +210,14 @@ const stack = [
 
           <div class="k-card p-6">
             <div class="flex items-center gap-3">
-              <div class="flex h-11 w-11 items-center justify-center rounded-2xl border-2 border-[var(--color-text)] bg-[var(--color-bg)] shadow-[4px_4px_0_0_var(--color-text)]">
+              <div class="flex h-11 w-11 items-center justify-center rounded-2xl border-2 border-(--color-text) bg-(--color-bg) shadow-[4px_4px_0_0_var(--color-text)]">
                 <Icon name="solar:shield-check-bold" class="text-xl" />
               </div>
               <div class="text-lg font-bold">
                 DX + guardrails
               </div>
             </div>
-            <ul class="mt-4 grid gap-2 text-sm text-[var(--color-text-muted)]">
+            <ul class="mt-4 grid gap-2 text-sm text-(--color-text-muted)">
               <li>ESLint with Antfu config</li>
               <li>Biome formatting</li>
               <li>Pre-commit hooks via lint-staged</li>
@@ -226,14 +226,14 @@ const stack = [
 
           <div class="k-card p-6">
             <div class="flex items-center gap-3">
-              <div class="flex h-11 w-11 items-center justify-center rounded-2xl border-2 border-[var(--color-text)] bg-[var(--color-bg)] shadow-[4px_4px_0_0_var(--color-secondary)]">
+              <div class="flex h-11 w-11 items-center justify-center rounded-2xl border-2 border-(--color-text) bg-(--color-bg) shadow-[4px_4px_0_0_var(--color-secondary)]">
                 <Icon name="solar:rocket-bold" class="text-xl" />
               </div>
               <div class="text-lg font-bold">
                 Batteries included
               </div>
             </div>
-            <ul class="mt-4 grid gap-2 text-sm text-[var(--color-text-muted)]">
+            <ul class="mt-4 grid gap-2 text-sm text-(--color-text-muted)">
               <li>@nuxt/icon + bundled icon sets</li>
               <li>@nuxt/image ready for production</li>
               <li>VueUse + Auto Animate available</li>
@@ -245,7 +245,7 @@ const stack = [
       <section id="stack" class="mx-auto max-w-6xl px-4 pb-16">
         <div class="flex items-end justify-between gap-6">
           <div>
-            <div class="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)]">
+            <div class="text-xs font-bold uppercase tracking-wider text-(--color-text-muted)">
               Stack
             </div>
             <h2 class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">
@@ -257,14 +257,14 @@ const stack = [
         <div class="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           <div v-for="item in stack" :key="item.title" class="k-card p-6">
             <div class="flex items-center gap-3">
-              <div class="flex h-11 w-11 items-center justify-center rounded-2xl border-2 border-[var(--color-text)] bg-[var(--color-bg)] shadow-[4px_4px_0_0_var(--color-primary)]">
+              <div class="flex h-11 w-11 items-center justify-center rounded-2xl border-2 border-(--color-text) bg-(--color-bg) shadow-[4px_4px_0_0_var(--color-primary)]">
                 <Icon :name="item.icon" class="text-xl" />
               </div>
               <div class="text-base font-bold">
                 {{ item.title }}
               </div>
             </div>
-            <div class="mt-3 text-sm leading-relaxed text-[var(--color-text-muted)]">
+            <div class="mt-3 text-sm leading-relaxed text-(--color-text-muted)">
               {{ item.description }}
             </div>
           </div>
@@ -275,16 +275,16 @@ const stack = [
         <div class="k-card p-6 sm:p-8">
           <div class="grid gap-8 lg:grid-cols-12">
             <div class="lg:col-span-7">
-              <div class="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)]">
+              <div class="text-xs font-bold uppercase tracking-wider text-(--color-text-muted)">
                 Creator
               </div>
               <h2 class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">
                 Michael Nji
               </h2>
-              <p class="mt-4 text-sm leading-relaxed text-[var(--color-text-muted)]">
+              <p class="mt-4 text-sm leading-relaxed text-(--color-text-muted)">
                 Full stack web developer with a focus on building beautiful, robust web projects. Contributor to open source including documentation for Biome and integration work around StepCI + CircleCI.
               </p>
-              <p class="mt-3 text-sm leading-relaxed text-[var(--color-text-muted)]">
+              <p class="mt-3 text-sm leading-relaxed text-(--color-text-muted)">
                 Currently working on Gemma Fx, a forex trading website.
               </p>
 
@@ -300,11 +300,11 @@ const stack = [
             </div>
 
             <div class="lg:col-span-5">
-              <div class="rounded-2xl border-2 border-[var(--color-text)] bg-[var(--color-bg)] p-6 shadow-[6px_6px_0_0_var(--color-accent)]">
+              <div class="rounded-2xl border-2 border-(--color-text) bg-(--color-bg) p-6 shadow-[6px_6px_0_0_var(--color-accent)]">
                 <div class="text-sm font-bold">
                   Quick facts
                 </div>
-                <ul class="mt-4 grid gap-2 text-sm text-[var(--color-text-muted)]">
+                <ul class="mt-4 grid gap-2 text-sm text-(--color-text-muted)">
                   <li>Works with Nuxt, Vue, TypeScript, Tailwind, Bun</li>
                   <li>Open source contributor (Biome docs)</li>
                   <li>Built integrations and documentation for CI workflows</li>
@@ -319,7 +319,7 @@ const stack = [
         <div class="k-card p-6 sm:p-8">
           <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <div class="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)]">
+              <div class="text-xs font-bold uppercase tracking-wider text-(--color-text-muted)">
                 Get started
               </div>
               <h2 class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">
@@ -329,19 +329,19 @@ const stack = [
           </div>
 
           <div class="mt-6 grid gap-6 lg:grid-cols-2">
-            <div class="rounded-2xl border-2 border-[var(--color-text)] bg-[var(--color-bg)] p-6 shadow-[6px_6px_0_0_var(--color-secondary)]">
+            <div class="rounded-2xl border-2 border-(--color-text) bg-(--color-bg) p-6 shadow-[6px_6px_0_0_var(--color-secondary)]">
               <div class="text-sm font-bold">
                 Install
               </div>
-              <pre class="mt-3 overflow-auto rounded-xl border-2 border-[var(--color-text)] bg-[var(--color-surface-2)] p-4 text-xs font-semibold text-[var(--color-text)]"><code>bun install</code></pre>
+              <pre class="mt-3 overflow-auto rounded-xl border-2 border-(--color-text) bg-(--color-surface-2) p-4 text-xs font-semibold text-(--color-text)"><code>bun install</code></pre>
             </div>
 
-            <div class="rounded-2xl border-2 border-[var(--color-text)] bg-[var(--color-bg)] p-6 shadow-[6px_6px_0_0_var(--color-primary)]">
+            <div class="rounded-2xl border-2 border-(--color-text) bg-(--color-bg) p-6 shadow-[6px_6px_0_0_var(--color-primary)]">
               <div class="text-sm font-bold">
                 Develop
               </div>
-              <pre class="mt-3 overflow-auto rounded-xl border-2 border-[var(--color-text)] bg-[var(--color-surface-2)] p-4 text-xs font-semibold text-[var(--color-text)]"><code>bun run dev</code></pre>
-              <div class="mt-3 text-sm text-[var(--color-text-muted)]">
+              <pre class="mt-3 overflow-auto rounded-xl border-2 border-(--color-text) bg-(--color-surface-2) p-4 text-xs font-semibold text-(--color-text)"><code>bun run dev</code></pre>
+              <div class="mt-3 text-sm text-(--color-text-muted)">
                 Starts the dev server on port 3000.
               </div>
             </div>
@@ -350,12 +350,12 @@ const stack = [
       </section>
     </main>
 
-    <footer class="border-t-2 border-[var(--color-text)] bg-[var(--color-bg)]">
+    <footer class="border-t-2 border-(--color-text) bg-(--color-bg)">
       <div class="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-8 sm:flex-row sm:items-center sm:justify-between">
-        <div class="text-sm text-[var(--color-text-muted)]">
+        <div class="text-sm text-(--color-text-muted)">
           © {{ new Date().getFullYear() }} Michael Nji
         </div>
-        <div class="flex items-center gap-2 text-sm text-[var(--color-text-muted)]">
+        <div class="flex items-center gap-2 text-sm text-(--color-text-muted)">
           <span class="k-badge">Nuxt 4</span>
           <span class="k-badge">Tailwind v4</span>
           <span class="k-badge">PrimeVue</span>

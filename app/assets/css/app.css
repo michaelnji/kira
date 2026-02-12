@@ -186,23 +186,23 @@
   }
 
   .k-btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border-2 border-(--color-text) px-4 py-2 text-sm font-semibold transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-primary) focus-visible:ring-offset-2 focus-visible:ring-offset-(--color-bg) active:translate-x-[2px] active:translate-y-[2px] disabled:cursor-not-allowed disabled:opacity-50;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border-2 border-(--color-text) px-4 py-2 text-sm font-semibold transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-primary) focus-visible:ring-offset-2 focus-visible:ring-offset-(--color-bg) active:translate-x-0.5 active:translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50;
   }
 
   .k-btn-primary {
-    @apply bg-(--color-primary) text-(--color-primary-foreground) shadow-[6px_6px_0_0_var(--color-text)] hover:translate-x-[-1px] hover:translate-y-[-1px];
+    @apply bg-(--color-primary) text-(--color-primary-foreground) shadow-[6px_6px_0_0_var(--color-text)] hover:-translate-x-px hover:-translate-y-px;
   }
 
   .k-btn-secondary {
-    @apply bg-(--color-secondary) text-(--color-secondary-foreground) shadow-[6px_6px_0_0_var(--color-text)] hover:translate-x-[-1px] hover:translate-y-[-1px];
+    @apply bg-(--color-secondary) text-(--color-secondary-foreground) shadow-[6px_6px_0_0_var(--color-text)] hover:-translate-x-px hover:-translate-y-px;
   }
 
   .k-btn-outline {
-    @apply bg-(--color-bg) text-(--color-text) shadow-[6px_6px_0_0_var(--color-accent)] hover:translate-x-[-1px] hover:translate-y-[-1px];
+    @apply bg-(--color-bg) text-(--color-text) shadow-[6px_6px_0_0_var(--color-accent)] hover:-translate-x-px hover:-translate-y-px;
   }
 
   .k-input {
-    @apply w-full rounded-xl border border-(--color-border) bg-(--color-bg) px-3 py-2 text-sm text-[var(--color-text)] placeholder:text-[var(--color-text-muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)];
+    @apply w-full rounded-xl border border-(--color-border) bg-(--color-bg) px-3 py-2 text-sm text-(--color-text) placeholder:text-(--color-text-muted) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-primary) focus-visible:ring-offset-2 focus-visible:ring-offset-(--color-bg);
   }
 
   .k-badge {
