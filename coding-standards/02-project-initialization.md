@@ -1,0 +1,1 @@
+Content for 02-project-initialization.md

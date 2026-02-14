@@ -1,0 +1,1 @@
+Content for 06-server-architecture.md

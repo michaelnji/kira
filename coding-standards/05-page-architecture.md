@@ -1,0 +1,1 @@
+Content for 05-page-architecture.md

@@ -1,0 +1,1 @@
+Content for 07-server-response-standard.md
