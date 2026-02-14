@@ -6,8 +6,7 @@ This document summarizes all coding standards, architectural patterns, workflows
 
 ⸻
 
-1. Project Initialization & Template Usage (Highest Priority)
-	•	Always clone the template repo: https://github.com/michaelnji/kira
+1. Project Initialization (Highest Priority)
 	•	Install dependencies using Bun.
 	•	Only add additional libraries/plugins if explicitly required by the feature/fix.
 	•	For animation: use Anime.js (basic) or GSAP (complex).

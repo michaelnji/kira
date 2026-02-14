@@ -1,1 +1,5 @@
-Content for 02-project-initialization.md
+# Project Initialization
+
+- Dependencies are installed using Bun
+- Add project-specific plugins/libraries as needed
+- Maintain template structure
