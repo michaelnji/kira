@@ -1,0 +1,13 @@
+{
+  "extraKnownMarketplaces": {
+    "nuxt-workspace": {
+      "source": {
+        "source": "github",
+        "repo": "theCodeD3vil/nuxt-workspace"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "nuxt-workspace@nuxt-workspace": true
+  }
+}

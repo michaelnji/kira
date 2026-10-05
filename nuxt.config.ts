@@ -1,26 +1,12 @@
 import tailwindcss from '@tailwindcss/vite'
 
+// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  vite: {
-    plugins: [tailwindcss()],
-  },
-  plugins: ['~/plugins/primevue'],
-  css: ['~/assets/css/app.css'],
-  modules: [
-    '@nuxt/fonts',
-    '@nuxt/icon',
-    '@nuxt/image',
-    '@vueuse/nuxt',
-    '@formkit/auto-animate/nuxt',
-  ],
-  icon: {
-    serverBundle: {
-      collections: ['solar'],
-    },
-  },
-  fonts: {
-    provider: 'local',
-  },
+  modules: ['@pinia/nuxt', 'shadcn-nuxt', '@nuxt/icon'],
+  css: ['~/assets/css/tailwind.css'],
+  vite: { plugins: [tailwindcss()] },
+  icon: { serverBundle: 'local' },
+  shadcn: { prefix: '', componentDir: './app/components/ui' },
 })

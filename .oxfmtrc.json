@@ -1,0 +1,6 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "semi": false,
+  "singleQuote": true,
+  "ignorePatterns": ["app/components/ui/**", ".nuxt", ".output", ".vercel", ".claude", "bun.lock"]
+}
